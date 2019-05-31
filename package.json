@@ -1,10 +1,17 @@
 {
   "name": "tupaia-service",
+  "author": "Sussol",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "https://github.com/openmsupply/tupaia-service.git",
-  "author": "mSupply",
+  "description": "Module for integrating mSupply and Tupaia",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/openmsupply/tupaia-service.git"
+  },
+  "bugs": {
+    "url": "https://github.com/openmsupply/elmis-service/issues"
+  },
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
