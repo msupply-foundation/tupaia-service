@@ -1,0 +1,8 @@
+{
+  "name": "tupaia-service",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/openmsupply/tupaia-service.git",
+  "author": "mSupply",
+  "license": "MIT"
+}
