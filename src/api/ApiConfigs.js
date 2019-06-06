@@ -1,5 +1,5 @@
 /**
- * Statis class for managing Axios configurations
+ * Static class for managing Axios configurations
  * for Tupaia API requests
  */
 
