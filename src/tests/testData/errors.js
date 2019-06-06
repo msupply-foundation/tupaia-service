@@ -1,3 +1,11 @@
+/**
+ * Test data for error objects.
+ * Any new error code added should have a new entry
+ * added into both CORRECT_ERROR_OBJECTS and
+ * ERROR_TEST_DATA, which will then have tests run
+ * on it.
+ */
+
 import {
   ERROR_RUNTIME,
   ERROR_UNKNOWN,
