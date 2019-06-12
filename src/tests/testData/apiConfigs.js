@@ -7,6 +7,7 @@
  */
 
 export const API_CONFIGS = ['surveyResponse'];
+
 export const API_CONFIG_INPUT_OUTPUT = {
   surveyResponse: {
     input: { username: 'Sussol', password: 'Sussol' },
