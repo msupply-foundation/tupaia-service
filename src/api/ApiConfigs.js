@@ -11,15 +11,17 @@ export default class ApiConfigs {
 
   /**
    * Returns the Axios config used to send requests to the
-   * Tupaia server. 400 status' will be handled in code with
-   * re-attempts, so will be success status' for this endpoint
-   * and need to be checked.
+   * Tupaia server. If there are invalid objects in the request
+   * body, a response is returned indicating which objects were
+   * rejected, with a 400 response.
    */
-  static surveyResponse = ({ username, password }) => ({
+  static surveyResponse = ({ username, password, requestBody }) => ({
+    ...this.BASE_CONFIG,
     method: 'POST',
     url: '/surveyResponse',
-    headers: { 'content-type': 'application/JSON' },
-    validateStatus: status => (status >= 200 && status < 300) || status === 400,
+    headers: { 'content-type': 'application/json' },
+    validateStatus: status => status >= 200 && status < 300,
+    data: [...requestBody],
     auth: {
       username,
       password,
