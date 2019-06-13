@@ -46,7 +46,7 @@ const ERROR_LOOKUP = {
  * Simple getter for error objects. Given a thrown error object
  * and method name, will return the correct error object
  * which should be bubbled up. In the case where an error object
- * has not been pre-defined for the specific error thwon, a generic
+ * has not been pre-defined for the specific error thrown, a generic
  * unknown error object is bubbled.
  *
  * Each error object can be differentiated from a JS error by it having
