@@ -27,13 +27,17 @@ const removeInvalidObjects = (originalData, invalidData) => {
   // object in the original body.
   const originalDataClone = [...originalData];
   const invalidObjects = [];
+  let indexOffset = 0;
   errors.forEach(errorObject => {
     // Error object: { row, error } - where row is the index and error
     // is an error message.
     const { row } = errorObject;
     // If the row value is valid, remove the index from the original data
-    if (!Number.isInteger(Number(row) || !(row < originalDataClone.length))) return;
-    const [invalidDatum] = originalDataClone.splice(row, 1);
+    if (!Number.isInteger(Number(row)) || !(row < invalidData.length) || row - indexOffset < 0) {
+      return;
+    }
+    const [invalidDatum] = originalDataClone.splice(row - indexOffset, 1);
+    indexOffset += 1;
     // If the invalidDatum exists, push it to the invalid objects array.
     if (!invalidDatum) return;
     invalidObjects.push(invalidDatum);
