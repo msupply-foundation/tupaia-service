@@ -11,7 +11,7 @@
  * an object which has the new data to push and the new array of
  * invalid objects.
  * @param   {Array}  originalData The original body sent in a POST to Tupaia
- * @param   {Array}  invalidData  A response from Tupaia from a request with
+ * @param   {Object}  invalidData  A response from Tupaia from a request with
  *                         invalid data.
  * @returns {Object} Contains two arrays for the new data to be sent, and
  *                   all objects removed.
