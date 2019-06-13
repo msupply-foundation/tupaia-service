@@ -24,7 +24,7 @@ import {
  * did not reach the server at all.
  */
 
-// Base generic errors to thrown on basic status code responses.
+// Base generic errors to be thrown on basic status code responses.
 const BASE_ERROR_LOOKUP_TABLE = {
   400: ERROR_REQUEST,
   401: ERROR_AUTHENTICATION,
