@@ -27,7 +27,7 @@ const sortErrorObjects = ({ row: rowA }, { row: rowB }) => {
  *                   all objects removed.
  *                   example: { data, invalidData }
  */
-const removeInvalidObjects = (originalData, invalidData) => {
+const removeInvalidObjects = (originalData = [], invalidData = {}) => {
   const { errors } = invalidData;
   // If there are no errors in the data, just return the original
   // data untouched, and an empty array of invalid data.
