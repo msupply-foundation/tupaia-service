@@ -1,3 +1,4 @@
+/* eslint-disable import/prefer-default-export */
 /**
  * Utility methods used for API request methods
  */
@@ -27,7 +28,7 @@ const sortErrorObjects = ({ row: rowA }, { row: rowB }) => {
  *                   all objects removed.
  *                   example: { data, invalidData }
  */
-const removeInvalidObjects = (originalData = [], invalidData = {}) => {
+export const removeInvalidObjects = (originalData = [], invalidData = {}) => {
   const { errors } = invalidData;
   // If there are no errors in the data, just return the original
   // data untouched, and an empty array of invalid data.
@@ -52,5 +53,3 @@ const removeInvalidObjects = (originalData = [], invalidData = {}) => {
   });
   return { data: originalDataClone, invalidData: invalidObjects };
 };
-
-export default removeInvalidObjects;
