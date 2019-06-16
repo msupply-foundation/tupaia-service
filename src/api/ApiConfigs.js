@@ -20,7 +20,7 @@ export default class ApiConfigs {
     method: 'POST',
     url: '/surveyResponse',
     headers: { 'content-type': 'application/json' },
-    validateStatus: status => status === 200,
+    validateStatus: status => status === 200 || status === 400,
     data: [...data],
     auth: {
       username,
