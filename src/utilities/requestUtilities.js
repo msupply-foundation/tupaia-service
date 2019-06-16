@@ -33,7 +33,7 @@ const removeInvalidObjects = (originalData, invalidData) => {
     // is an error message.
     const { row } = errorObject;
     // If the row value is valid, remove the index from the original data
-    if (!Number.isInteger(Number(row)) || !(row < invalidData.length) || row - indexOffset < 0) {
+    if (!Number.isInteger(Number(row)) || row >= invalidData.length || row - indexOffset < 0) {
       return;
     }
     const [invalidDatum] = originalDataClone.splice(row - indexOffset, 1);
