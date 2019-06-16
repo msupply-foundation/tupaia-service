@@ -7,8 +7,8 @@
  * descending order.
  */
 const sortErrorObjects = ({ row: rowA }, { row: rowB }) => {
-  if (rowA > rowB) return 1;
-  if (rowA < rowB) return -1;
+  if (rowA < rowB) return 1;
+  if (rowA > rowB) return -1;
   return 0;
 };
 
@@ -39,7 +39,7 @@ const removeInvalidObjects = (originalData, invalidData) => {
   const errorsClone = [...errors];
   errorsClone.sort(sortErrorObjects);
   const invalidObjects = [];
-  errors.forEach(errorObject => {
+  errorsClone.forEach(errorObject => {
     // Error object: { row, error } - where row is the index and error
     // is an error message.
     const { row } = errorObject;
