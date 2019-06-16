@@ -1,4 +1,4 @@
-import removeInvalidObjects from '../utilities/requestUtilities';
+import { removeInvalidObjects } from '../utilities/requestUtilities';
 import { removeInvalidObjectsTestData } from './testData/utilities';
 
 /**

@@ -2,7 +2,7 @@
 import Axios from 'axios';
 
 import ApiConfigs from '../api/ApiConfigs';
-import removeInvalidObjects from '../utilities/requestUtilities';
+import { removeInvalidObjects } from '../utilities/requestUtilities';
 import getErrorObject from '../errors/errorLookup';
 
 export async function surveyResponse({ credentials = {}, data = [] }) {
