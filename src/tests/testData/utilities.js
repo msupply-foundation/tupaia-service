@@ -20,4 +20,12 @@ export const removeInvalidObjectsTestData = {
     INPUT: {},
     OUTPUT: { data: [], invalidData: [] },
   },
+  TEST_FIVE: {
+    INPUT: { originalData: [], invalidData: { errors: [{ row: 0 }, { row: 2 }] } },
+    OUTPUT: { data: [], invalidData: [] },
+  },
+  TEST_SIX: {
+    INPUT: { originalData: [1, 2, 3], invalidData: { errors: [{ row: 0 }, { row: 2 }] } },
+    OUTPUT: { data: [2], invalidData: [3, 1] },
+  },
 };
