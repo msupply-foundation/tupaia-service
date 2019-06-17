@@ -38,8 +38,8 @@ export const ERROR_SERVER = method =>
 
 /**
  * Simple method to return a formatted error object.
- * @param {ERROR_CODE}            function An error code function
- * @param {...optionalParameters} String Optional parameters for the ERROR_CODE function
+ * @param {Function}   ERROR_CODE An error code function
+ * @param {String}     optionalParameters parameters for the ERROR_CODE function
  */
 export function errorObject(ERROR_CODE, ...optionalParameters) {
   const { name: code } = ERROR_CODE;

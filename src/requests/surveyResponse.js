@@ -5,6 +5,17 @@ import ApiConfigs from '../api/ApiConfigs';
 import { removeInvalidObjects } from '../utilities/requestUtilities';
 import getErrorObject from '../errors/errorLookup';
 
+/**
+ * Request method for POST requests to the Tupaia surveyResponse
+ * endpoint
+ * @param {Object} RequestData Request data
+ * @param {Object} RequestData.credentials Basic authentication details
+ * @param {String} RequestData.credentials.username
+ * @param {String} RequestData.credentials.password
+ * @param {Array}  RequestData.data Request body, array of objects to be pushed
+ * @returns {{data: Array, invalidData: Array}}
+ */
+
 export async function surveyResponse({ credentials = {}, data = [] }) {
   // Fetch the HTTP config with required settings, timeouts etc.
   let apiConfig = ApiConfigs.surveyResponse({ ...credentials, data });
