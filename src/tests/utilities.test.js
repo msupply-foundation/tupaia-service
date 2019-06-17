@@ -10,6 +10,7 @@ import { removeInvalidObjectsTestData } from './testData/utilities';
  * 5 : calling with an empty originalData parameter
  * 6 : calling with out of place parameters
  * 7 : calling with an empty, but existing, errors array
+ * 8 : calling with an error index being out of range
  */
 test('Should pass all tests', () => {
   Object.values(removeInvalidObjectsTestData).forEach(({ INPUT, OUTPUT }) => {

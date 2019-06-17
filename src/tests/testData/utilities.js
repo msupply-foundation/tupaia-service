@@ -32,4 +32,8 @@ export const removeInvalidObjectsTestData = {
     INPUT: { originalData: [1, 2, 3], invalidData: { errors: [] } },
     OUTPUT: { data: [1, 2, 3], invalidData: [] },
   },
+  TEST_EIGHT: {
+    INPUT: { originalData: [1, 2, 3], invalidData: { errors: [{ row: 4 }] } },
+    OUTPUT: { data: [1, 2, 3], invalidData: [] },
+  },
 };
