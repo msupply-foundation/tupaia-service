@@ -28,10 +28,11 @@ export async function surveyResponse({ credentials = {}, data = [] }) {
     // response code of 400 contain information which can be used to
     // resend the request. All others will throw an error.
     const { data: response } = await Axios(apiConfig);
-    const { errors } = response;
+    const { errors, error } = response;
     // If there is an errors array in the response, need to remove the
     // invalid objects and try again.
     if (!errors) {
+      if (error) throw { response: { status: 500 }, error };
       returnObject = { data: response };
     } else {
       // Remove the invalid objects and store them in a new array.
