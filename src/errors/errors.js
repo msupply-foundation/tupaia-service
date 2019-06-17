@@ -35,6 +35,8 @@ export const ERROR_REQUEST = method =>
   `Error: During ${method}, the request sent was malformed and could not be validated. HTTP CODE: 400`;
 export const ERROR_SERVER = method =>
   `Error: During ${method}, Unknown Server Error - HTTP CODE: 500`;
+export const ERROR_MAINTENANCE = method =>
+  `Error: During ${method}, the server is under maintenance. HTTP CODE: 502`;
 
 /**
  * Simple method to return a formatted error object.
