@@ -24,10 +24,9 @@ export async function surveyResponse({ credentials = {}, data = [] }) {
   // Attempt to push the data to Tupaia, anything other than success is
   // considered an error and one will be thrown.
   try {
-    // Valid status code is 200 only. All others will throw an error.
-    // When a POST request contains invalid objects, a response is sent
-    // which lists the indicies which are invalid with a status code of
-    // 200.
+    // Valid status code is 200 and 400, as invalidated responses with a
+    // response code of 400 contain information which can be used to
+    // resend the request. All others will throw an error.
     const { data: response } = await Axios(apiConfig);
     const { errors } = response;
     // If there is an errors array in the response, need to remove the
