@@ -47,7 +47,7 @@ export const removeInvalidObjects = (originalData = [], invalidData = {}) => {
     // is an error message.
     const { row } = errorObject;
     // If the row value is valid, remove the index from the original data
-    if (!Number.isInteger(Number(row)) || row >= invalidData.length) return;
+    if (!Number.isInteger(Number(row)) || row >= originalDataClone.length) return;
     const [invalidDatum] = originalDataClone.splice(row, 1);
     // If the invalidDatum exists, push it to the invalid objects array.
     if (!invalidDatum) return;
