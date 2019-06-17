@@ -30,9 +30,11 @@ const sortErrorObjects = ({ row: rowA }, { row: rowB }) => {
  */
 export const removeInvalidObjects = (originalData = [], invalidData = {}) => {
   const { errors } = invalidData;
-  // If there are no errors in the data, just return the original
+  // If there are no errors or original data, just return the original
   // data untouched, and an empty array of invalid data.
-  if (!errors) return { data: originalData, invalidData: [] };
+  const defaultReturn = { data: originalData, invalidData: [] };
+  if (!originalData || originalData.length === 0) return defaultReturn;
+  if (!errors || originalData.length === 0) return defaultReturn;
   // Otherwise, copy the original body sent to tupaia, and iterate
   // through the array of errors, which indicate each invalid
   // object in the original body.
