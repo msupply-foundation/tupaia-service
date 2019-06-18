@@ -18,7 +18,7 @@ import getErrorObject from '../errors/errorLookup';
 
 export async function surveyResponse({ credentials = {}, data = [] }) {
   // Fetch the HTTP config with required settings, timeouts etc.
-  let apiConfig = ApiConfigs.surveyResponse({ ...credentials, data });
+  let apiConfig = ApiConfigs.surveyResponse({ credentials, data });
   // Function scope return object to handle different block scopes.
   let returnObject;
   // Attempt to push the data to Tupaia, anything other than success is
