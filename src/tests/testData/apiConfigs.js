@@ -10,9 +10,9 @@ export const API_CONFIGS = ['surveyResponse'];
 
 export const API_CONFIG_INPUT_OUTPUT = {
   surveyResponse: {
-    input: { username: 'Sussol', password: 'Sussol' },
+    input: { credentials: { username: 'Sussol', password: 'Sussol', baseURL: 'url' } },
     output: {
-      baseURL: 'https://dev-api.tupaia.org/v2',
+      baseURL: 'url',
       timeout: 10000,
       method: 'POST',
       url: '/surveyResponse',
