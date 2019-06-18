@@ -7,14 +7,18 @@
  */
 
 export const API_CONFIGS = ['surveyResponse'];
+
 export const API_CONFIG_INPUT_OUTPUT = {
   surveyResponse: {
     input: { username: 'Sussol', password: 'Sussol' },
     output: {
+      baseURL: 'https://dev-api.tupaia.org/v2',
+      timeout: 10000,
       method: 'POST',
       url: '/surveyResponse',
-      headers: { 'content-type': 'application/JSON' },
-      validateStatus: status => (status >= 200 && status < 300) || status === 400,
+      headers: { 'content-type': 'application/json' },
+      validateStatus: status => status === 200,
+      data: [],
       auth: {
         username: 'Sussol',
         password: 'Sussol',

@@ -1,3 +1,5 @@
+/* eslint-disable max-len */
+
 /**
  * Contains simple functions which correspond to an error code.
  * Each error code function accepts parameters which are
@@ -29,11 +31,17 @@ export const ERROR_NETWORK = method =>
   `Error: During ${method}, the request did not reach the server.`;
 export const ERROR_AUTHENTICATION = method =>
   `Error: During ${method}, an authentication error occurred. HTTP CODE: 401`;
+export const ERROR_REQUEST = method =>
+  `Error: During ${method}, the request sent was malformed and could not be validated. HTTP CODE: 400`;
+export const ERROR_SERVER = method =>
+  `Error: During ${method}, Unknown Server Error - HTTP CODE: 500`;
+export const ERROR_MAINTENANCE = method =>
+  `Error: During ${method}, the server is under maintenance. HTTP CODE: 502`;
 
 /**
  * Simple method to return a formatted error object.
- * @param {ERROR_CODE}            function An error code function
- * @param {...optionalParameters} String Optional parameters for the ERROR_CODE function
+ * @param {Function}   ERROR_CODE An error code function
+ * @param {String}     optionalParameters parameters for the ERROR_CODE function
  */
 export function errorObject(ERROR_CODE, ...optionalParameters) {
   const { name: code } = ERROR_CODE;

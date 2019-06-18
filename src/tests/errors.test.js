@@ -6,8 +6,8 @@
  * and each error code function should have it's own test.
  */
 
-import { CORRECT_ERROR_OBJECTS, ERROR_TEST_DATA } from '../testData/errors';
-import { errorObject } from '../../errors/errors';
+import { CORRECT_ERROR_OBJECTS, ERROR_TEST_DATA } from './testData/errors';
+import { errorObject } from '../errors/errors';
 
 test('All error objects should be deeply equal', () => {
   Object.entries(ERROR_TEST_DATA).forEach(([errorCode, testData]) => {
