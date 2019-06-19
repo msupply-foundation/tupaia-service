@@ -4,7 +4,6 @@ import {
   ERROR_INCORRECT_URL,
   ERROR_NETWORK,
   ERROR_REQUEST,
-  ERROR_UNKNOWN,
   ERROR_SERVER,
   errorObject,
 } from '../../errors/errors';
@@ -87,18 +86,6 @@ test('All methods should throw a network error when no response is received', as
     const errorCatcher = await runAndCatchFunction(requestFunctions[functionName]);
     expect(errorCatcher).toEqual(
       errorObject({ errorCode: ERROR_NETWORK, method: functionName, extra: undefined })
-    );
-  });
-});
-
-test('All methods should throw an unknown error when a response is empty', async () => {
-  const errorThrower = throwGenericError.bind(null, {});
-  jest.doMock('axios', () => jest.fn(errorThrower));
-  const requestFunctions = require('../../requests');
-  Object.keys(requestFunctions).forEach(async functionName => {
-    const errorCatcher = await runAndCatchFunction(requestFunctions[functionName]);
-    expect(errorCatcher).toEqual(
-      errorObject({ errorCode: ERROR_UNKNOWN, method: functionName, extra: undefined })
     );
   });
 });
