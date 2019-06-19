@@ -37,7 +37,9 @@ test('All methods should throw an invalid request error on a 400 code response',
   const requestFunctions = require('../../requests');
   Object.keys(requestFunctions).forEach(async functionName => {
     const errorCatcher = await runAndCatchFunction(requestFunctions[functionName]);
-    expect(errorCatcher).toEqual(errorObject(ERROR_REQUEST, functionName));
+    expect(errorCatcher).toEqual(
+      errorObject({ errorCode: ERROR_REQUEST, method: functionName, extra: undefined })
+    );
   });
 });
 
@@ -47,7 +49,9 @@ test('All methods should throw an unauthorized error on a 401 status code respon
   const requestFunctions = require('../../requests');
   Object.keys(requestFunctions).forEach(async functionName => {
     const errorCatcher = await runAndCatchFunction(requestFunctions[functionName]);
-    expect(errorCatcher).toEqual(errorObject(ERROR_AUTHENTICATION, functionName));
+    expect(errorCatcher).toEqual(
+      errorObject({ errorCode: ERROR_AUTHENTICATION, method: functionName, extra: undefined })
+    );
   });
 });
 
@@ -57,7 +61,9 @@ test('All methods should throw an incorrect URL error on a 404 status code respo
   const requestFunctions = require('../../requests');
   Object.keys(requestFunctions).forEach(async functionName => {
     const errorCatcher = await runAndCatchFunction(requestFunctions[functionName]);
-    expect(errorCatcher).toEqual(errorObject(ERROR_INCORRECT_URL, functionName));
+    expect(errorCatcher).toEqual(
+      errorObject({ errorCode: ERROR_INCORRECT_URL, method: functionName, extra: undefined })
+    );
   });
 });
 
@@ -67,7 +73,9 @@ test('All methods should throw a server error on a 500 status code response', as
   const requestFunctions = require('../../requests');
   Object.keys(requestFunctions).forEach(async functionName => {
     const errorCatcher = await runAndCatchFunction(requestFunctions[functionName]);
-    expect(errorCatcher).toEqual(errorObject(ERROR_SERVER, functionName));
+    expect(errorCatcher).toEqual(
+      errorObject({ errorCode: ERROR_SERVER, method: functionName, extra: undefined })
+    );
   });
 });
 
@@ -77,7 +85,9 @@ test('All methods should throw a network error when no response is received', as
   const requestFunctions = require('../../requests');
   Object.keys(requestFunctions).forEach(async functionName => {
     const errorCatcher = await runAndCatchFunction(requestFunctions[functionName]);
-    expect(errorCatcher).toEqual(errorObject(ERROR_NETWORK, functionName));
+    expect(errorCatcher).toEqual(
+      errorObject({ errorCode: ERROR_NETWORK, method: functionName, extra: undefined })
+    );
   });
 });
 
@@ -87,6 +97,8 @@ test('All methods should throw an unknown error when a response is empty', async
   const requestFunctions = require('../../requests');
   Object.keys(requestFunctions).forEach(async functionName => {
     const errorCatcher = await runAndCatchFunction(requestFunctions[functionName]);
-    expect(errorCatcher).toEqual(errorObject(ERROR_UNKNOWN, functionName));
+    expect(errorCatcher).toEqual(
+      errorObject({ errorCode: ERROR_UNKNOWN, method: functionName, extra: undefined })
+    );
   });
 });

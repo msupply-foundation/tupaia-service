@@ -43,10 +43,14 @@ export const CORRECT_ERROR_OBJECTS = {
 };
 
 export const ERROR_TEST_DATA = {
-  ERROR_RUNTIME: [ERROR_RUNTIME, 'error message'],
-  ERROR_UNKNOWN: [ERROR_UNKNOWN, 'method'],
-  ERROR_INCORRECT_URL: [ERROR_INCORRECT_URL, 'method'],
-  ERROR_UNEXPECTED_RESPONSE: [ERROR_UNEXPECTED_RESPONSE, 'method', 'status'],
-  ERROR_NETWORK: [ERROR_NETWORK, 'method'],
-  ERROR_AUTHENTICATION: [ERROR_AUTHENTICATION, 'method'],
+  ERROR_RUNTIME: { errorCode: ERROR_RUNTIME, message: 'error message' },
+  ERROR_UNKNOWN: { errorCode: ERROR_UNKNOWN, method: 'method' },
+  ERROR_INCORRECT_URL: { errorCode: ERROR_INCORRECT_URL, method: 'method' },
+  ERROR_UNEXPECTED_RESPONSE: {
+    errorCode: ERROR_UNEXPECTED_RESPONSE,
+    method: 'method',
+    status: 'status',
+  },
+  ERROR_NETWORK: { errorCode: ERROR_NETWORK, method: 'method' },
+  ERROR_AUTHENTICATION: { errorCode: ERROR_AUTHENTICATION, method: 'method' },
 };
