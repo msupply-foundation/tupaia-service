@@ -42,6 +42,9 @@ const ERROR_LOOKUP = {
   surveyResponse: {
     ...BASE_ERROR_LOOKUP_TABLE,
   },
+  testConnection: {
+    ...BASE_ERROR_LOOKUP_TABLE,
+  },
 };
 
 /**

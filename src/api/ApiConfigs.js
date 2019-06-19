@@ -15,16 +15,20 @@ export default class ApiConfigs {
    * body, a response is returned indicating which objects were
    * rejected, with a 400 response.
    */
-  static surveyResponse = ({ username, password, data = [] }) => ({
-    ...this.BASE_CONFIG,
-    method: 'POST',
-    url: '/surveyResponse',
-    headers: { 'content-type': 'application/json' },
-    validateStatus: status => status === 200 || status === 400,
-    data: [...data],
-    auth: {
-      username,
-      password,
-    },
-  });
+  static surveyResponse = ({ credentials = {}, data = [] }) => {
+    const { baseURL, username, password } = credentials;
+    return {
+      ...this.BASE_CONFIG,
+      baseURL,
+      method: 'POST',
+      url: '/surveyResponse',
+      headers: { 'content-type': 'application/json' },
+      validateStatus: status => status === 200 || status === 400,
+      data: [...data],
+      auth: {
+        username,
+        password,
+      },
+    };
+  };
 }
