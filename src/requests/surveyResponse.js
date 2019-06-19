@@ -33,10 +33,10 @@ export async function surveyResponse({ credentials = {}, data = [] }) {
     // invalid objects and try again.
     if (!errors) {
       if (error) throw { response: { status: 500 }, error };
-      returnObject = { data: response };
+      returnObject = { validData: data };
     } else {
       // Remove the invalid objects and store them in a new array.
-      const { data: newData, invalidData } = removeInvalidObjects(data, response);
+      const { validData: newData, invalidData } = removeInvalidObjects(data, response);
       // Get a new config with the new request body.
       apiConfig = ApiConfigs.surveyResponse({ ...credentials, data: newData });
       // Send the request again
@@ -46,7 +46,7 @@ export async function surveyResponse({ credentials = {}, data = [] }) {
       // throw a bad request - 400 error.
       if (secondResponseErrors) throw { response: { status: 400 } };
       // Otherwise the POST is succesful
-      returnObject = { data: newData, invalidData };
+      returnObject = { validData: data, invalidData };
     }
     return returnObject;
   } catch (error) {
