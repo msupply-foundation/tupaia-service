@@ -17,13 +17,13 @@ const throwGenericError = genericError => {
 };
 
 const runAndCatchFunction = async functionToRun => {
-  let errorCatcher;
+  let returnValue;
   try {
-    await functionToRun({});
+    returnValue = await functionToRun({});
   } catch (error) {
-    errorCatcher = error;
+    returnValue = error;
   }
-  return errorCatcher;
+  return returnValue;
 };
 
 beforeEach(() => {
