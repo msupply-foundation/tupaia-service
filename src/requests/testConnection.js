@@ -26,6 +26,6 @@ export async function testConnection({ credentials = {} }) {
     await Axios(apiConfig);
     return true;
   } catch (error) {
-    throw getErrorObject({ error, method: 'testConnection' });
+    return getErrorObject({ error, method: 'testConnection' });
   }
 }
