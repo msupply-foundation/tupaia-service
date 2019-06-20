@@ -29,6 +29,7 @@ export async function surveyResponse({ credentials = {}, data = [] }) {
     // response code of 400 contain information which can be used to
     // resend the request. All others will throw an error.
     const { data: response } = await Axios(apiConfig);
+
     const { errors, error } = response;
     // If there is an errors array in the response, need to remove the
     // invalid objects and try again.
@@ -41,7 +42,7 @@ export async function surveyResponse({ credentials = {}, data = [] }) {
       // Remove the invalid objects and store them in a new array.
       const { validData: newData, invalidData } = removeInvalidObjects(data, response);
       // Get a new config with the new request body.
-      apiConfig = ApiConfigs.surveyResponse({ ...credentials, data: newData });
+      apiConfig = ApiConfigs.surveyResponse({ credentials, data: newData });
       // Send the request again
       const { data: secondResponse } = await Axios(apiConfig);
       const { errors: secondResponseErrors } = secondResponse;
@@ -54,7 +55,7 @@ export async function surveyResponse({ credentials = {}, data = [] }) {
           extra: { data, invalidData },
         });
       // Otherwise the POST is succesful
-      returnObject = { validData: data, invalidData };
+      returnObject = { validData: newData, invalidData };
     }
     return returnObject;
   } catch (error) {
