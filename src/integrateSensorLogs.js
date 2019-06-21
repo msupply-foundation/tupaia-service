@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /* eslint-disable import/prefer-default-export */
 
 import { surveyResponse } from './requests/surveyResponse';
@@ -36,7 +37,7 @@ export const integrateSensorLogs = async ({ credentials, data }) => {
     // Run the requst method which will push the data to Tupaia, returning
     // an object with the shape: {data: [], invalidData: []}, where data is
     // succesfully pushed logs, and invalidData not.
-    const returnObject = { ...(await surveyResponse({ credentials, data })) };
+    const returnObject = await surveyResponse({ credentials, data });
     // If there are any logs which have succesfully been pushed, create
     // an array of sensor log IDs to return.
     const { validData } = returnObject;
@@ -49,6 +50,6 @@ export const integrateSensorLogs = async ({ credentials, data }) => {
     }
     return returnObject;
   } catch (error) {
-    return error;
+    return getErrorObject({ error, method: methodName });
   }
 };

@@ -59,7 +59,6 @@ export async function surveyResponse({ credentials = {}, data = [] }) {
     }
     return returnObject;
   } catch (error) {
-    if (error.errorCode) throw error;
     throw getErrorObject({ error, method: 'surveyResponse' });
   }
 }

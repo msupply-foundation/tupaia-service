@@ -62,7 +62,8 @@ const ERROR_LOOKUP = {
  * @return {Object} A generic error object with code and message details.
  */
 export default function getErrorObject({ error, method, extra, message }) {
-  const { response, request } = error;
+  const { response, request, errorCode } = error;
+  if (errorCode) return error;
   // If the error has a response field, the request reached the server.
   // Use either the pre-defined method, status error object or an unexpected
   // response object for all others.
@@ -72,7 +73,7 @@ export default function getErrorObject({ error, method, extra, message }) {
       errorCode: ERROR_LOOKUP[method][status] || ERROR_UNEXPECTED_RESPONSE,
       method,
       status,
-      extra,
+      extra: extra || error,
       message,
     });
   }
