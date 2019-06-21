@@ -50,6 +50,6 @@ export const integrateSensorLogs = async ({ credentials, data }) => {
     }
     return returnObject;
   } catch (error) {
-    return getErrorObject({ error, method: methodName });
+    throw getErrorObject({ error, method: methodName });
   }
 };
