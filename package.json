@@ -1,7 +1,7 @@
 {
-  "name": "tupaia-service",
+  "name": "@openmsupply/tupaia-service",
   "author": "Sussol",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "main": "index.js",
   "description": "Module for integrating mSupply and Tupaia",
   "license": "MIT",
