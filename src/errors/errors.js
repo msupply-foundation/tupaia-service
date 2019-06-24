@@ -16,26 +16,28 @@
 /**
  * Generic error codes
  */
-export const ERROR_RUNTIME = errorMessage =>
-  `Error: Unexpected runtime error occurred. ${errorMessage}`;
-export const ERROR_UNKNOWN = method => `Error: During ${method}, an unknown error occured.`;
+export const ERROR_RUNTIME = ({ message }) =>
+  `Error: Unexpected runtime error occurred. ${message}`;
+export const ERROR_UNKNOWN = ({ method }) => `Error: During ${method}, an unknown error occured.`;
+export const ERROR_MISSING_PARAMETER = ({ method, message }) =>
+  `Error: During ${method}, required parameter - ${message} - was missing`;
 
 /**
  * Generic network error codes
  */
-export const ERROR_INCORRECT_URL = method =>
+export const ERROR_INCORRECT_URL = ({ method }) =>
   `Error: During ${method}, incorrect base URL. HTTP CODE: 404`;
-export const ERROR_UNEXPECTED_RESPONSE = (method, status) =>
+export const ERROR_UNEXPECTED_RESPONSE = ({ method, status }) =>
   `Error: During ${method}, an unexpected response ${status} was received.`;
-export const ERROR_NETWORK = method =>
+export const ERROR_NETWORK = ({ method }) =>
   `Error: During ${method}, the request did not reach the server.`;
-export const ERROR_AUTHENTICATION = method =>
+export const ERROR_AUTHENTICATION = ({ method }) =>
   `Error: During ${method}, an authentication error occurred. HTTP CODE: 401`;
-export const ERROR_REQUEST = method =>
+export const ERROR_REQUEST = ({ method }) =>
   `Error: During ${method}, the request sent was malformed and could not be validated. HTTP CODE: 400`;
-export const ERROR_SERVER = method =>
+export const ERROR_SERVER = ({ method }) =>
   `Error: During ${method}, Unknown Server Error - HTTP CODE: 500`;
-export const ERROR_MAINTENANCE = method =>
+export const ERROR_MAINTENANCE = ({ method }) =>
   `Error: During ${method}, the server is under maintenance. HTTP CODE: 502`;
 
 /**
@@ -43,10 +45,12 @@ export const ERROR_MAINTENANCE = method =>
  * @param {Function}   ERROR_CODE An error code function
  * @param {String}     optionalParameters parameters for the ERROR_CODE function
  */
-export function errorObject(ERROR_CODE, ...optionalParameters) {
-  const { name: code } = ERROR_CODE;
+export function errorObject({ errorCode, method, status, extra, message }) {
+  const { name: code } = errorCode;
+
   return {
     code,
-    message: ERROR_CODE(...optionalParameters),
+    message: errorCode({ method, status, message }),
+    extra,
   };
 }

@@ -61,19 +61,32 @@ const ERROR_LOOKUP = {
  * @param  {String} method The method the error was thrown in.
  * @return {Object} A generic error object with code and message details.
  */
-export default function getErrorObject(error, method) {
-  const { response, request } = error;
+export default function getErrorObject({ error, method, extra, message }) {
+  const { response, request, errorCode } = error;
+  if (errorCode) return error;
   // If the error has a response field, the request reached the server.
   // Use either the pre-defined method, status error object or an unexpected
   // response object for all others.
   if (response) {
     const { status } = response;
-    return errorObject(ERROR_LOOKUP[method][status] || ERROR_UNEXPECTED_RESPONSE, method, status);
+    return errorObject({
+      errorCode: ERROR_LOOKUP[method][status] || ERROR_UNEXPECTED_RESPONSE,
+      method,
+      status,
+      extra: extra || error,
+      message,
+    });
   }
   // Otherwise, if there is only a request field, the request did not reach the
   // server. A network error has occurred.
-  if (request) return errorObject(ERROR_NETWORK, method);
+  if (request)
+    return errorObject({
+      errorCode: ERROR_NETWORK,
+      method,
+      extra,
+      message,
+    });
   // In all other cases, for which there shouldn't be, thrown an unkown error
-  // as a last resort.
-  return errorObject(ERROR_LOOKUP[method].UNKNOWN, method);
+  // as a last resort.({
+  return { errorCode: ERROR_LOOKUP[method].UNKNOWN, method, extra, message };
 }

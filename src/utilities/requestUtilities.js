@@ -32,7 +32,7 @@ export const removeInvalidObjects = (originalData = [], invalidData = {}) => {
   const { errors } = invalidData;
   // If there are no errors or original data, just return the original
   // data untouched, and an empty array of invalid data.
-  const defaultReturn = { data: originalData, invalidData: [] };
+  const defaultReturn = { validData: originalData, invalidData: [] };
   if (!originalData || originalData.length === 0) return defaultReturn;
   if (!errors || originalData.length === 0) return defaultReturn;
   // Otherwise, copy the original body sent to tupaia, and iterate
@@ -51,7 +51,7 @@ export const removeInvalidObjects = (originalData = [], invalidData = {}) => {
     const [invalidDatum] = originalDataClone.splice(row, 1);
     // If the invalidDatum exists, push it to the invalid objects array.
     if (!invalidDatum) return;
-    invalidObjects.push(invalidDatum);
+    invalidObjects.push({ ...invalidDatum, ...errorObject });
   });
-  return { data: originalDataClone, invalidData: invalidObjects };
+  return { validData: originalDataClone, invalidData: invalidObjects };
 };

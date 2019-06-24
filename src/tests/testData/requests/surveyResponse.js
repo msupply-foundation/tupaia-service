@@ -41,19 +41,24 @@ export const surveyResponseTestData = {
       },
     },
     OUTPUT: {
-      data: {
-        count: 2,
-        results: [
-          {
-            surveyResponseId: '5d06d6ccb227b5062e12046e',
-            answerIds: ['5d06d6ccb227b5062e125b9a'],
+      validData: [
+        {
+          entity_code: 'VU_2230',
+          timestamp: 1559185864383,
+          survey_id: '5cedd572f013d66671d50d0a',
+          answers: {
+            FRIDGE_MAX_TEMP: '',
           },
-          {
-            surveyResponseId: '5d06d6ccb227b5062e122995',
-            answerIds: ['5d06d6ccb227b5062e12747e'],
+        },
+        {
+          entity_code: 'VU_2230',
+          timestamp: 1559185864383,
+          survey_id: '5cedd572f013d66671d50d0a',
+          answers: {
+            FRIDGE_MAX_TEMP: '1',
           },
-        ],
-      },
+        },
+      ],
     },
   },
 };
