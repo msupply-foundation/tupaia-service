@@ -3,6 +3,7 @@
 
 import { surveyResponse } from './requests/surveyResponse';
 import { ERROR_MISSING_PARAMETER, errorObject } from './errors/errors';
+import getErrorObject from './errors/errorLookup';
 
 export const integrateSensorLogs = async ({ credentials, data }) => {
   // Check parameters are valid before continuing, prematurely
@@ -11,7 +12,7 @@ export const integrateSensorLogs = async ({ credentials, data }) => {
 
   const methodName = 'integrateSensorLogs';
   if (!(data && credentials)) {
-    const message = (!data && 'data') || (!credentials && credentials);
+    const message = (!data && 'data') || (!credentials && 'credentials');
     throw errorObject({
       errorCode: ERROR_MISSING_PARAMETER,
       method: methodName,
