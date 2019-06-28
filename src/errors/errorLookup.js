@@ -45,6 +45,9 @@ const ERROR_LOOKUP = {
   testConnection: {
     ...BASE_ERROR_LOOKUP_TABLE,
   },
+  integrateSensorLogs: {
+    ...BASE_ERROR_LOOKUP_TABLE,
+  },
 };
 
 /**
@@ -83,10 +86,10 @@ export default function getErrorObject({ error, method, extra, message }) {
     return errorObject({
       errorCode: ERROR_NETWORK,
       method,
-      extra,
+      extra: extra || error,
       message,
     });
   // In all other cases, for which there shouldn't be, thrown an unkown error
   // as a last resort.({
-  return { errorCode: ERROR_LOOKUP[method].UNKNOWN, method, extra, message };
+  return { errorCode: ERROR_LOOKUP[method].UNKNOWN, method, extra: extra || error, message };
 }
