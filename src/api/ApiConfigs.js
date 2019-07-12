@@ -7,7 +7,8 @@ export default class ApiConfigs {
   static BASE_CONFIG = {
     baseURL: 'https://dev-api.tupaia.org/v2',
     timeout: 1200000,
-    maxContentLength: 10000,
+    maxContentLength: 6000000,
+    maxBodyLength: 6000000,
   };
 
   /**
